@@ -134,6 +134,7 @@ public class Autocomplete:
     // Returns the number of terms that start with the given prefix.
     // Precondition: the internal dictionary is in lexicographic order.
     // Complexity: O(log N) where N is the number of dictionary terms
+    public int numberOfMatches(String prefix)
 ```
 
 #### Performance requirements
