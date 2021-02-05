@@ -5,16 +5,17 @@
 *******************************************************************************/
 
 Group members:
-- [...]
-- [...]
-- [...]
+- [Richard Novenius]:
+- [Jonatan Andersson]:
+- [Marcus Andersson]:
 
 /******************************************************************************
 ** 1. Describe how your firstIndexOf() method in RangeBinarySearch.java
 **    finds the first index of a key that equals the search key.
 ******************************************************************************/
 
-[...]
+[ We use binary search to first find if there is any matching keys, if there is a matching key we continue to search for
+more keys earlier in the array, when the entire array has been searched through we stop the search. ]
 
 /******************************************************************************
 ** 2. State and justify the asymptotic complexity of the operations
@@ -25,17 +26,17 @@ Group members:
 **    You may take the number of comparisons as a proxy for the runtime.
 ******************************************************************************/
 
-sortDictionary: O(...)
+sortDictionary: O(Nlog(N))
 
-[..short explanation..]
+[Arrays sort is based on tim sort that is a mix of insertion and merge which gives a complexity of nlog(n)]
 
-allMatches: O(...)
+allMatches: O(log(n) + m(log(m))
 
-[..short explanation..]
+[RangeBinary search  give 2* log(n) Arrays sort gives m*log(m) for loop complexity m not relevant since m*log(m) grows faster]
 
-numberOfMatches: O(...)
+numberOfMatches: O(log(n))
 
-[..short explanation..]
+[2* calls for binary search log(n) remove the constant]
 
 /******************************************************************************
 ** Appendix: General information
@@ -43,15 +44,15 @@ numberOfMatches: O(...)
 ** A. Approximately how many hours did you spend on the assignment?
 ******************************************************************************/
 
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
+[Richard Novenius]:  [7h]
+[Jonatan Andersson]:  [7h]
+[Marcus Andersson]:  [7h]
 
 /******************************************************************************
 ** B. Are there any known bugs / limitations?
 ******************************************************************************/
 
-[...]
+[It will not specify swedish locale]
 
 /******************************************************************************
 ** C. Did you collaborate with any other students on this lab?
@@ -60,13 +61,13 @@ numberOfMatches: O(...)
 **    may have used in creating your design.
 ******************************************************************************/
 
-[...]
+[No, comparator explanation on canvas]
 
 /******************************************************************************
 ** D. Describe any serious problems you encountered.                    
 ******************************************************************************/
 
-[...]
+[We had some issues understanding what we were supposed to do, but when we figured that out it worked fine]
 
 /******************************************************************************
 ** E. List any other comments here.
@@ -74,5 +75,5 @@ numberOfMatches: O(...)
 **    from doing the assignment, and whether you enjoyed it.                                             
 ******************************************************************************/
 
-[...]
+[Kinda hard to get what you wanted us to do from the gitlab explanation, what methods you where allowed to use and so on]
 
