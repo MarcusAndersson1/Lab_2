@@ -1,20 +1,3 @@
-/******************************************************************************
- *  Compilation:  javac AutocompleteCLI.java
- *  Execution:    java  AutocompleteCLI dictionary.txt max-matches
- *  Dependencies: Autocomplete.java Term.java
- *    
- *  @author Peter Ljunglöf
- *  @author Christian Sattler
- *    
- *  Interactive program to demonstrate the Autocomplete class.
- *
- *     * Reads a list of terms and weights from a file, specified as a
- *       program argument.
- *
- *     * When the user enters a string, it displays the top max-matches
- *       terms that start with the text that the user typed.
- *
- ******************************************************************************/
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -76,7 +59,7 @@ class AutocompleteCLI {
 
             // Print the number of matches, find all matches, and print the top-most ones.
             int nrMatches = autocomplete.numberOfMatches(prefix);
-            System.out.println("Number of matches for prefix " + prefix + ": " + nrMatches);
+            System.out.println("Number of matches for prefix " + prefix + ": " + nrMatches+1);
             Term[] results = autocomplete.allMatches(prefix);
             for (int i = 0; i < Math.min(max_matches, results.length); i++)
                 System.out.println(results[i]);

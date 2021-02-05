@@ -1,5 +1,8 @@
-
+import java.text.CollationElementIterator;
+import java.text.Collator;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class Term {
     private String word;
@@ -24,24 +27,38 @@ public class Term {
     // Extracts a prefix from the word.
     // If `len` is larger than the word length, the prefix is the entire word.
     public String getPrefix(int len) {
+        StringBuilder prefix = new StringBuilder();
+        if (len >= getWord().length()) {
+            return getWord();
+        }
+        for (int i = 0; i < len; i++) {
+            prefix.append(getWord().toCharArray()[i]);
+        }
+        return prefix.toString();
+       //return getWord().substring(0,len);
         // TODO
-        throw new UnsupportedOperationException();
+       // throw new UnsupportedOperationException();
     }
 
     // Compares two terms in case-insensitive lexicographic order.
     // TODO
-    public static final Comparator<Term> byLexicographicOrder = null;
+
+    public static final Comparator<Term> byLexicographicOrder = (term1, term2) ->
+            term1.getWord().compareToIgnoreCase(term2.getWord());
 
     // Compares two terms in descending order by weight.
     // TODO
-    public static final Comparator<Term> byReverseWeightOrder = null;
+    public static final Comparator<Term> byReverseWeightOrder = Comparator.comparingLong(Term::getWeight);
+
 
     // This method returns a comparator that compares the two terms in case-insensitive
     // lexicographic order, but using only the first k characters of each word.
     public static Comparator<Term> byPrefixOrder(int k) {
         // TODO
         // Hint: use getPrefix and byLexicographicOrder.
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return (term1, term2) ->
+                term1.getPrefix(k).compareToIgnoreCase(term2.getPrefix(k));
     }
 
     /*

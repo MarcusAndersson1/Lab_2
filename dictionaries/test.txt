@@ -1,0 +1,11 @@
+1 aaa
+2 abba
+3 abc
+4 baa
+5 bab
+6 bac
+7 bba
+8 bbb
+9 caa
+10 cba
+11 ccc
