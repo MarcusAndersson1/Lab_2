@@ -42,6 +42,7 @@ public class Term {
 
     // Compares two terms in case-insensitive lexicographic order.
     // TODO
+    public static Collator swedishLocale = Collator.getInstance(new Locale("sv", "SE"));
 
     public static final Comparator<Term> byLexicographicOrder = (term1, term2) ->
             term1.getWord().compareToIgnoreCase(term2.getWord());

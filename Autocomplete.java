@@ -1,6 +1,8 @@
+import java.text.Collator;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class Autocomplete {
     private Term[] dictionary;
@@ -14,7 +16,9 @@ public class Autocomplete {
     // Sorts the dictionary in *case-insensitive* lexicographic order.
     // Complexity: O(N log N) where N is the number of dictionary terms
     private void sortDictionary() {
+        Term.swedishLocale.setStrength(Collator.PRIMARY);
         Arrays.sort(dictionary, Term.byLexicographicOrder);
+
         //for (Term term:dictionary){System.out.println(term);}
         // TODO
        // throw new UnsupportedOperationException();
@@ -29,7 +33,6 @@ public class Autocomplete {
         Term term = new Term(prefix,  -1);
                 for(int i = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
                     i < RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())); i++){
-
                         allMatchesArray[MatchingValues] = dictionary[i];
                         MatchingValues++;
 

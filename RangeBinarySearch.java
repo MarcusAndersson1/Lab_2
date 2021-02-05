@@ -11,6 +11,8 @@ public class RangeBinarySearch {
     // Precondition: `a` is sorted according to the given comparator.
     // Complexity: O(log N) comparisons where N is the length of `a`
     public static<T> int firstIndexOf(T[] a, T key, Comparator<T> comparator) {
+        //Arrays.sort(a,comparator);
+
         int lo = 0;
         int hi = a.length-1;
         int firstValue = -1;
