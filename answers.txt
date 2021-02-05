@@ -1,13 +1,13 @@
 
-/******************************************************************************
-** DIT181  Datastrukturer och algoritmer, LP3 2021
-** Lab 2: Autocomplete
-*******************************************************************************/
+    /******************************************************************************
+    ** DIT181  Datastrukturer och algoritmer, LP3 2021
+    ** Lab 2: Autocomplete
+    *******************************************************************************/
 
-Group members:
-- [Richard Novenius]:
-- [Jonatan Andersson]:
-- [Marcus Andersson]:
+    Group members:
+    - [Richard Novenius]:
+    - [Jonatan Andersson]:
+    - [Marcus Andersson]:
 
 /******************************************************************************
 ** 1. Describe how your firstIndexOf() method in RangeBinarySearch.java

@@ -1,20 +1,18 @@
 
 import java.util.Scanner;
-import java.util.Arrays;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 class AutocompleteCLI {
     public static void main(String[] args) {
         // If not enough program arguments are given, display the usage.
+
         if (args.length < 2) {
             System.err.println("Usage: you have to provide two program arguments:");
             System.err.println("  (1) the path to a dictionary file");
             System.err.println("  (2) the maximum number of matches that will be displayed");
             System.exit(1);
         }
-
         Term[] dictionary = null;
         int max_matches = 0;
         String[] prefixes = null;
@@ -59,7 +57,7 @@ class AutocompleteCLI {
 
             // Print the number of matches, find all matches, and print the top-most ones.
             int nrMatches = autocomplete.numberOfMatches(prefix);
-            System.out.println("Number of matches for prefix " + prefix + ": " + nrMatches+1);
+            System.out.println("Number of matches for prefix " + prefix + ": " + nrMatches);
             Term[] results = autocomplete.allMatches(prefix);
             for (int i = 0; i < Math.min(max_matches, results.length); i++)
                 System.out.println(results[i]);
