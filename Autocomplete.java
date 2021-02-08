@@ -1,8 +1,5 @@
-import java.text.Collator;
+
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Locale;
 
 public class Autocomplete {
     private Term[] dictionary;
@@ -16,7 +13,6 @@ public class Autocomplete {
     // Sorts the dictionary in *case-insensitive* lexicographic order.
     // Complexity: O(N log N) where N is the number of dictionary terms
     private void sortDictionary() {
-        Term.swedishLocale.setStrength(Collator.PRIMARY);
         Arrays.sort(dictionary, Term.byLexicographicOrder);
 
         //for (Term term:dictionary){System.out.println(term);}
@@ -29,15 +25,19 @@ public class Autocomplete {
     // Complexity: O(log N + M log M) where M is the number of matching terms
     public Term[] allMatches(String prefix) {
         Term [] allMatchesArray = new Term [numberOfMatches(prefix)];
+
         int MatchingValues = 0;
         Term term = new Term(prefix,  -1);
-                for(int i = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
-                    i < RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())); i++){
-                        allMatchesArray[MatchingValues] = dictionary[i];
-                        MatchingValues++;
+        if(allMatchesArray.length>0) {
+            for (int i = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
+                 i < RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())) + 1 ; i++) {
+                allMatchesArray[MatchingValues] = dictionary[i];
+                MatchingValues++;
 
-                }
-        Arrays.sort(allMatchesArray, Term.byReverseWeightOrder.reversed());
+            }
+        }
+            //removed reversed
+        Arrays.sort(allMatchesArray, Term.byReverseWeightOrder);
         //for (Term termA : allMatchesArray){System.out.println(termA);}
         return allMatchesArray;
         // TODO
@@ -50,8 +50,13 @@ public class Autocomplete {
     public int numberOfMatches(String prefix) {
         Term term = new Term(prefix, -1);
         int first = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
-       int last = RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
-       return last-first;
+       int last = RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())) + 1;
+       if(first != -1 && last != -1){
+           return last-first;
+
+       }else{
+           return 0;
+       }
         // TODO
        // throw new UnsupportedOperationException();
     }

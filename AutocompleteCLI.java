@@ -5,6 +5,15 @@ import java.nio.file.Paths;
 
 class AutocompleteCLI {
     public static void main(String[] args) {
+
+       /*
+        Simple test for revers weight order
+        Term a = new Term("spam", 0);
+        Term b = new Term("ham", 1);
+        System.out.println(Term.byReverseWeightOrder.compare(a,b));
+        System.exit(0);
+        */
+
         // If not enough program arguments are given, display the usage.
 
         if (args.length < 2) {

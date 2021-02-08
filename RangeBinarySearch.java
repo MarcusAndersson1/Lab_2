@@ -1,7 +1,4 @@
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class RangeBinarySearch {
@@ -12,7 +9,6 @@ public class RangeBinarySearch {
     // Complexity: O(log N) comparisons where N is the length of `a`
     public static<T> int firstIndexOf(T[] a, T key, Comparator<T> comparator) {
         //Arrays.sort(a,comparator);
-
         int lo = 0;
         int hi = a.length-1;
         int firstValue = -1;
@@ -28,6 +24,7 @@ public class RangeBinarySearch {
                 lo = mid+1;
             }
         }
+        //System.out.println("first value " + firstValue);
             return firstValue;
 
         // TODO
@@ -54,6 +51,7 @@ public class RangeBinarySearch {
                 lo = mid+1;
             }
         }
+        //System.out.println("last value " + lastValue);
         return lastValue;
         // TODO
       //  throw new UnsupportedOperationException();

@@ -1,8 +1,6 @@
-import java.text.CollationElementIterator;
-import java.text.Collator;
-import java.util.Collections;
+
 import java.util.Comparator;
-import java.util.Locale;
+
 
 public class Term {
     private String word;
@@ -35,21 +33,16 @@ public class Term {
             prefix.append(getWord().toCharArray()[i]);
         }
         return prefix.toString();
-       //return getWord().substring(0,len);
-        // TODO
-       // throw new UnsupportedOperationException();
     }
 
     // Compares two terms in case-insensitive lexicographic order.
-    // TODO
-    public static Collator swedishLocale = Collator.getInstance(new Locale("sv", "SE"));
-
     public static final Comparator<Term> byLexicographicOrder = (term1, term2) ->
             term1.getWord().compareToIgnoreCase(term2.getWord());
 
     // Compares two terms in descending order by weight.
     // TODO
-    public static final Comparator<Term> byReverseWeightOrder = Comparator.comparingLong(Term::getWeight);
+    //added reversed
+    public static final Comparator<Term> byReverseWeightOrder = Comparator.comparingLong(Term::getWeight).reversed();
 
 
     // This method returns a comparator that compares the two terms in case-insensitive
