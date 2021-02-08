@@ -30,6 +30,7 @@ public class Autocomplete {
         Term term = new Term(prefix,  -1);
         if(allMatchesArray.length>0) {
             for (int i = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
+                 // 1 added for one iteration when there is only on valid match firstIndex = lastIndex
                  i < RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())) + 1 ; i++) {
                 allMatchesArray[MatchingValues] = dictionary[i];
                 MatchingValues++;
@@ -50,11 +51,14 @@ public class Autocomplete {
     public int numberOfMatches(String prefix) {
         Term term = new Term(prefix, -1);
         int first = RangeBinarySearch.firstIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length()));
+
+        // added + one to get the last element
        int last = RangeBinarySearch.lastIndexOf(dictionary, term, Term.byPrefixOrder(prefix.length())) + 1;
-       if(first != -1 && last != -1){
+       if(first != -1 && last != 0){ // only return when there is a match
            return last-first;
 
        }else{
+           // return 0 when there is no match
            return 0;
        }
         // TODO

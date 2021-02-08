@@ -41,7 +41,7 @@ public class Term {
 
     // Compares two terms in descending order by weight.
     // TODO
-    //added reversed
+    //added .reversed() so the testing works
     public static final Comparator<Term> byReverseWeightOrder = Comparator.comparingLong(Term::getWeight).reversed();
 
 
